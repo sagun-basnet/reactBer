@@ -1,16 +1,21 @@
 import React from "react";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import Button from "./components/Button";
+import Form from "./components/Form";
 
 const App = () => {
+  const fun = () => {
+    console.log("fun");
+  };
   return (
-    <div className="flex justify-between h-screen items-center pr-4 ">
-      <div className="border-2 border-black h-[5rem] w-[10rem] rounded-4xl text-red-500 bg-blue-500 hover:bg-red-500 hover:h-[6rem] "></div>
-      <div className="border-2 h-20 w-20"></div>
-      <div className="border-2 h-20 w-20"></div>
-      <div className="border-2 h-20 w-20"></div>
-    </div>
+    <>
+      <Button text="More" color="red" myFun={fun()} />
+      <Button text="Click" color="blue" />
+
+      <Form title="Login" />
+    </>
   );
 };
 
 export default App;
-
-
