@@ -21,10 +21,10 @@ const Navbar = () => {
       </ul>
       <div className="flex">
         <Link to="/login">
-          <button>Login</button>
+        <button>Login</button>
         </Link>
         <Link to="/register">
-          <button>Sign up</button>
+        <button>Sign up</button>
         </Link>
       </div>
     </nav>
