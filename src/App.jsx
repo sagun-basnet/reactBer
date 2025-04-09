@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 import SingleProduct from "./components/SingleProduct";
 
 const App = () => {
+
   const Layout = () => {
     return (
       <>
