@@ -14,9 +14,9 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Footer from "./components/Footer";
 import SingleProduct from "./components/SingleProduct";
+import ApiFetch from "./pages/ApiFetch";
 
 const App = () => {
-
   const Layout = () => {
     return (
       <>
@@ -67,6 +67,10 @@ const App = () => {
     {
       path: "/register",
       element: <Register />,
+    },
+    {
+      path: "/api-fetch",
+      element: <ApiFetch />,
     },
     {
       path: "/single-product/:id",
