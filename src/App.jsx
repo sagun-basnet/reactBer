@@ -15,6 +15,7 @@ import Register from "./pages/Register";
 import Footer from "./components/Footer";
 import SingleProduct from "./components/SingleProduct";
 import ApiFetch from "./pages/ApiFetch";
+import Table from "./pages/Table";
 
 const App = () => {
   const Layout = () => {
@@ -71,6 +72,10 @@ const App = () => {
     {
       path: "/api-fetch",
       element: <ApiFetch />,
+    },
+    {
+      path: "/table",
+      element: <Table />,
     },
     {
       path: "/single-product/:id",

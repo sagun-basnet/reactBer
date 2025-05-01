@@ -1,34 +1,34 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const Register = () => {
   const init = {
     name: "",
     address: "",
-    phone: "",
     email: "",
     password: "",
   };
   const [formData, setFormData] = useState(init);
+  const [data, setData] = useState([]);
 
-  // const [count, setCount] = useState(0);
-
-  // const handleClick = () => {
-  //   setCount(count + 1);
-  //   setCount((prev) => prev + 1);
-  //   console.log(count);
-  // };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (formData.name.length === 0) {
       toast.error("Name is required");
       return;
     }
 
-    e.preventDefault();
-    console.log(formData);
-    setFormData(init);
-    toast.success("Form submitted successfully");
+    await axios
+      .post("http://localhost:5055/api/postUser", formData)
+      .then((res) => {
+        console.log(res, ":post form data");
+        // setData(res.data);
+        toast.success(res.data.message);
+      })
+      .catch((err) => {
+        console.log(err, "ERROR");
+      });
   };
 
   const handleChange = (e) => {
@@ -65,15 +65,6 @@ const Register = () => {
           id=""
           placeholder="Enter address"
           value={formData.address}
-        />
-        <input
-          onChange={handleChange}
-          className="w-full p-2 rounded-sm outline-none border-1"
-          type="number"
-          name="phone"
-          id=""
-          placeholder="Enter phone"
-          value={formData.phone}
         />
         <input
           onChange={handleChange}
