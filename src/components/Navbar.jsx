@@ -1,7 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const { currentUser, logout } = useContext(AuthContext);
+  console.log(currentUser, "Navbar");
+  const navigate = useNavigate();
+
   return (
     <nav className="flex justify-between items-center bg-gray-800 text-white p-4">
       <h1>logo</h1>
@@ -19,14 +25,27 @@ const Navbar = () => {
           <li>Contact</li>
         </Link>
       </ul>
-      <div className="flex">
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
-        <Link to="/register">
-          <button>Sign up</button>
-        </Link>
-      </div>
+      <span className="font-bold">{currentUser?.other.name}</span>
+      {currentUser ? (
+        <button
+          onClick={() => {
+            logout();
+            toast.success("Logout successfully");
+            navigate("/login");
+          }}
+        >
+          Logout
+        </button>
+      ) : (
+        <div className="flex">
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+          <Link to="/register">
+            <button>Sign up</button>
+          </Link>
+        </div>
+      )}
     </nav>
   );
 };

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 
 const Navbar = () => {
-  const { currentUser } = useContext(AuthContext);
+const { currentUser } = useContext(AuthContext);
   console.log(currentUser, 8);
 
   return (
@@ -23,15 +23,19 @@ const Navbar = () => {
           <li>Contact</li>
         </Link>
       </ul>
-      <h1>{currentUser?.other.name}</h1>
-      <div className="flex">
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
-        <Link to="/register">
-          <button>Sign up</button>
-        </Link>
-      </div>
+      <h1>{currentUser?.other?.name}</h1>
+      {currentUser ? (
+        <div className="flex">
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+          <Link to="/register">
+            <button>Sign up</button>
+          </Link>
+        </div>
+      ) : (
+        <button>Logout</button>
+      )}
     </nav>
   );
 };

@@ -6,10 +6,16 @@ const Login = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   const formData = { email: "dosolobuhe@mailinator.com", password: "123456" };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    login(formData);
-    navigate("/");
+    const res = await login(formData);
+    console.log(res, "Login");
+
+    if (res.data.other.role === 2) {
+      navigate("/");
+    } else {
+      navigate("/api-fetch");
+    }
   };
   return (
     <>
