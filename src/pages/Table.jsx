@@ -66,6 +66,9 @@ const Table = () => {
                 Password
               </th>
               <th scope="col" className="px-6 py-3">
+                Profile
+              </th>
+              <th scope="col" className="px-6 py-3">
                 Action
               </th>
             </tr>
@@ -89,6 +92,13 @@ const Table = () => {
                     {item.email}
                   </td>
                   <td className="px-6 py-4">{item.password}</td>
+                  <td className="px-6 py-4">
+                    <img
+                      className="h-20 w-20 rounded-full"
+                      src={`http://localhost:5055${item.profile}`}
+                      alt=""
+                    />
+                  </td>
                   <td className="flex gap-4 px-6 py-4 bg-gray-50 dark:bg-gray-800">
                     <button className="p-2 px-4 bg-blue-500 rounded-md">
                       Edit
