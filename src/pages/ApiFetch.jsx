@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Cookie from "js-cookie";
 
 const ApiFetch = () => {
   const [data, setData] = useState([]);
@@ -32,18 +33,24 @@ const ApiFetch = () => {
       body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
     },
   ];
+  const token = Cookie.get("accessToken");
+
+  const headers = {
+    Authorization: `Bearer ${token}`
+  }
+
   const fetchData = async () => {
     // try {
     //   const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
 
-    //   //   console.log(res.data, " :RES");
+    //   //   console.log(res.data, " :RES"); 
     //   setData(res.data);
     // } catch (err) {
     //   console.log(err);
     // }
 
     await axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .get("https://jsonplaceholder.typicode.com/posts", {headers})
       .then((res) => {
         setData(res.data);
       })
